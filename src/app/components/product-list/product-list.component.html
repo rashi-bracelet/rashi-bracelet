@@ -1,0 +1,30 @@
+<section class="product-list">
+  <div class="container">
+    <div class="filters">
+      <div class="collection-filters">
+        <button 
+          *ngFor="let collection of collections" 
+          [class.active]="selectedCollection === collection"
+          (click)="filterByCollection(collection)">
+          {{ collection }}
+        </button>
+      </div>
+
+      <div class="price-filter">
+        <select [(ngModel)]="selectedPriceRange" (change)="filterByPrice()">
+          <option value="all">All Prices</option>
+          <option *ngFor="let range of priceRanges" [value]="range.value">
+            {{ range.label }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="products-grid">
+      <app-product-card 
+        *ngFor="let product of filteredProducts" 
+        [product]="product">
+      </app-product-card>
+    </div>
+  </div>
+</section> 

@@ -1,0 +1,22 @@
+<header>
+  <nav>
+    <a routerLink="/products" class="logo" (click)="onCollectionChange('all')">Rashi Bracelets</a>
+    
+    <div class="nav-links">
+      <a routerLink="/products" [queryParams]="{collection: 'all'}" (click)="onCollectionChange('all')">Shop</a>
+      <a routerLink="/products" [queryParams]="{collection: 'couples'}" (click)="onCollectionChange('couples')">Couples</a>
+      <a routerLink="/products" [queryParams]="{collection: 'friends'}" (click)="onCollectionChange('friends')">Friends</a>
+      <a routerLink="/products" [queryParams]="{collection: 'customize'}" (click)="onCollectionChange('customize')">Customize</a>
+      
+      <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'">
+        <i class="fas" [class.fa-sun]="isDarkTheme" [class.fa-moon]="!isDarkTheme"></i>
+      </button>
+
+      <a class="cart-link" (click)="navigateToCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+        <span class="cart-total">₹{{ cartTotal }}</span>
+      </a>
+    </div>
+  </nav>
+</header> 
